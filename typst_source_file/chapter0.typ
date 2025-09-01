@@ -461,3 +461,130 @@ removing heat within our construct. And f'(x) is the  aftermath of derivation wh
 
 So what's the purpose of this exercise? It's to show that the inverse I'm talking about isn't an additive inverse. Like what happens when you add + 1 and -1, resulting in 0. The kind of inverse we're talking about returns something previously modified into its original state. 
 
+== 0.7) Why Learn Integrals and Derivatives?
+
+Why did I spent so much talking about 2 fundamental calculus topics? How is this strange math relevant to electronics, or even the outside world? Well, various phenomenon in physics are described through the lens of the integral and derivative.
+
+These problems below showcase occurrences that can be described through derivatives and integrals. This is meant to be a teaser, so I wont go into much detail about what each variable mean.
+
+=== Problem 1:
+
+The relationship between current (I) and charge (Q) is defined as $I = (d/"dt")(Q)$. A capacitor on a breadboard is storing some charge. It's charge can be represented as the following : 
+
+#figure(
+  image("0_example1_before.png", width: 70%),
+  caption: [
+    Graph of our charge Q
+  ],
+)
+
+$
+equation(
+  q(t)= cases(
+    t   "between" 0 <= t <= 2,
+    2  "between" 2 <= t <= 4,
+    -t + 6 "between" 4 <= t <= 6,
+  )
+)
+$
+
+Find the current i(t). 
+
+== Solution 1: Slope method and power rule (for derivatives)
+
+Recall that the slope formula is either $(y_2 - y_1)/(x_2 - x_1)$ or $(y_1 - y_2)/(x_1 - x_2)$. 
+
++ $(2 - 0)/(2 - 0) = (2)/(2) = 1$
+
++ $(2-2)/(4-2) = (0)/2 = 0$
+
++ $(0-2)/(6-4) = (-2)/(2) = -1$
+
+Now let's just "confirm" this with the power rule.
+
++ $(d/"dt")(t^1) = 1 t^0 = 1 $
+
++ $(d/"dt")(2) = 0$
+
++ $(d/"dt")(-t^1 + 6) = (-d/"dt")(-t^1)+ (d/"dt")(6) = (-1t^0) + (0) = -1$
+
+Using our solution above, i(t) can be described as:
+
+$
+equation(
+  i(t)= (d/"dt")(q) = cases(
+    1   "between" 0 <= t <= 2,
+    0  "between" 2 <= t <= 4,
+    -1 "between" 4 <= t <= 6,
+  )
+)
+$
+
+== Problem 2:
+
+As mentioned above, $I = (d/"dt")(Q)$. To calculate Q, we simply integrate both sides of the equation. This results in $Q = integral(I) + C.$ We're assuming no initial conditions, so $Q = integral(I)$.
+
+
+Given this current i(t):
+
+#figure(
+  image("0_example2_before.png", width: 70%),
+  caption: [
+    Graph of our  current I
+  ],
+)
+
+$
+equation(
+  i(t)= cases(
+    -t + 4   "between" 0 <= t <= 2,
+    2  "between" 2 <= t <= 4,
+    -t + 6 "between" 4 <= t <= 6,
+  )
+)
+$
+
+Find the charge q(t) and calculate the amount of it produced during each interval 
+
+== Solution 2: Area method and power rule (for integrals)
+
+Let's break the graph into 3 segments: 
+- from x = 0 to x = 2
+- from x = 2 to x = 4
+- from x = 4 to x = 6
+
+Each segment has a width of 2. Using this, we can calculate the areas of our basic shapes.
+
++ From the first range, we have a triangle placed on top of a square. The triangle has an base and height of 2, leading to $"area" = (1/2)(2)(2)= (1/2)(4) = 2$. 
+ - With an length and width of 2, the square's area is $(2)(2) = 4$. To find total area, we add the area of the triangle and the square. Our total area is $2 + 4 = 6.$
+
++ From the second range, we have a square with the base and height of 2. This means our area is $2(2) = 4$
+
++ By having a base and height of 2, our triangle has an area of $(1/2)(2)(2) = (1/2)(4) = (2)$.
+
+Let's now use the power rule to make sure our calculations are accurate.
+
++ $integral^2_0(-t + 4 ) = integral^2_0(-t) +integral^2_0(4) = 
+(-1/2)(t^2)|^2_0 + (4)(t)|^2_0 = (-1/2)(2^2-0) + (4) (2 - 0) = (-1/2)(4) + (8) = (-2) + (8) = 6$
+
++ $integral^4_2(2) = (2)(x)|^2_0 = 2 (2 - 0) = 2(2) = 4$
+
++ $integral^6_4(-t +6) = integral^6_4(-t) + integral^6_4(6) = (-1/2)(t^2)|^6_4 + 6(t)|^6_4 = (-1/2)(6^2-4^2)+ 6(6-4) = (-1/2)(20) + (6)(2) = -(10) + (12) = 2.$
+
+$
+equation(
+  q(t)= cases(
+    -1/2t^2 + 4t + C   "between" 0 <= t <= 2,
+    2t + C  "between" 2 <= t <= 4,
+    -1/2t^2 + 6t + C "between" 4 <= t <= 6,
+  )
+)
+$
+
+From 0 to 2, we produce 6 Coulomb (C).
+
+From 2 to 4, we produce 4 Coulomb (C).
+
+From 4 to 6, we produce 2 Coulomb (C).
+
+
