@@ -6,7 +6,7 @@
 
 == 1.1) What is Current?
 
-Understanding current requires building upon a few physics topic. Let's begin. 
+Understanding current requires building upon a few physics topics. Let's begin. 
 
 === 1.11) Structure and Behavior of Atoms
 Atoms are composed of protons and neutrons as their core with electrons orbiting around them. This is an oversimplification but picture a satellite (like the moon) orbiting around a planet (like the Earth). Protons have a positive charge, neutrons have 0 charge, and electrons have the negative charge. Current and other electrical physics concepts are (mostly) the effects of these electrons.
@@ -226,11 +226,47 @@ So let's just mirror the resistor and simulate it.
 Remember, just rotating the resistor would not affect anything about this circuit. The current is not being changed in ways. It's just that the software now perceives the current's direction in a similar manner that you do. 
 
 This section was just made to reduce panic. And no, your current values from ohm's law are not wrong (after quintuple checking your algebra).
+
 == 1.4) Equivalent Resistance 
 
 You will regular encounter circuits with more than 1 resistor (the horror). Do you then apply ohm's law individually to each resistor ? You can but that would be tedious and filled with opportunities for errors. Can we have the same resistance with fewer resistors? Allow me to introduce equivalent resistance! 
 
+Suppose we have a circuit with numerous resistors in row. These resistors are next to each, so we can say they are in series. How much would our current reduce after going through all of them? What's the least amount of resistors are needed to mimic the many resistor's resistance? What values would be give these resistors?
 
+#figure(
+  image("eq1_before.png", width: 70%),
+  caption: [!0 V; 30 \u{03A9}, 20 \u{03A9}, and 10 \u{03A9} resistors]
+)
+
+Our current after going through all 3 resistors is 1/6 amps (obtained through simulation). How did we get this value? When using ohms law with 10 as our V and the individual resistances as R, we obtain current values of 1, $1/2$, and $1/3$. None of which match our measurement of 1/6 A. 
+
+We current have an unsolved equation of : $(10 V)/R = 1/6$. After isolating for R, we obtain an resistance value of 60 \u{03A9}. Where is that 60 from? Well its the sum of 10,20, and 30. Let's see what happens when we replace all 3 resistors with a single 60 ohms resistor. 
+
+#figure(
+  image("eq1_after.png", width: 70%),
+  caption: [Simplified circuit, 10 V and 60 \u{03A9} resistor]
+)
+
+After both simulating and using ohm's law , we obtain 1/6 A of current. This proves that the two circuits are identical. The act of reducing the number of resistors while keep the same resistance is known as finding the equivalent resistance. Resistors (or other components) right next to each other are said to be in series. We can equivalence resistance of resistors in series by adding them. 
+
+Resistors that are "across" each other are said to be in parallel. By in parallel, the "line" which the resistors sit on  form parallel lines (either vertically or horizontally) with each other. The formula for equivalent resistance for resistors in parallel is a bit less intuitive. Its: $ 1/R_"eq" = (1/R_1+1/R_2+1/R_3+...+1/R_n) $. My preferred format (that's equivalent) is: $ R_"eq" = (1/R_1+1/R_2+1/R_3+...+ 1/R_n)^(-1) $
+
+Let's do example problem to confirm this formula. 
+
+#figure(
+  image("eq2_before.png", width: 70%),
+  caption: [10 V ; 10,15, and 25 \u{03A9} resistors]
+)
+
+The current is emitted from the positive side, travels throughout the circuit, and returns to the voltage's negative side. Before it goes through negative side, the current is positive. Our current from the simulations is negative since it went through that negative terminal. Our simulation gives us 2.06667 amps (before entering) or -2.06667 amps (after entering).
+
+Now we need to an equivalent circuit with only 1 resistor. Using our formula for parallel, we obtain the value : $ R_"eq" = (1/10+1/15+1/25)^(-1) = 4.83871 \u{03A9} $.
+
+#figure(
+  image("eq2_after.png", width: 70%),
+  caption: [Simplified circuit ; 10 V; 4.83871 \u{03A9} resistor]
+)
+ Now let's just use ohm's law to make sure the two circuits have the same current output. $I = V/R = 10/4.83871 = 2.06667$ amps. We have a match!
 
 == 1.5) The Breadboard and the Digital Multimeter
 
