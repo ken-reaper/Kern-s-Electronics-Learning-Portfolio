@@ -8,20 +8,19 @@
 
 == 0.1) Purpose of this Portfolio
 
-It would be impossible to discuss circuits without mentioning advanced math and physics. Yet these topics are difficult, even for students who had prior exposure before starting undergrad (after high school graduation). This leads to many who are interested in electronics and circuits to ignore the math and physics. That's a result of the theory being perceived as overwhelming.
+It would be impossible to discuss circuits without mentioning advanced math and physics. Yet these topics are difficult, even for students who had prior exposure before starting undergrad (after high school graduation). This leads to many who are interested in electronics and circuits ignoring math and physics. That's a result of the theory being perceived as overwhelming.
 
-So to make this as accessible as possible, this text will take a less rigorous approach to the math. The main goal of this project is to help you make something hands-on (whether it's simulations or physical circuits design) as soon as possible.
+So to make this as accessible as possible, this text will take a less rigorous approach to math. The main goal of this project is to help you make something hands-on (whether it's simulations or physical circuits design) as soon as possible.
 
-For example, I'll discuss the logic behind derivatives and integrals for polynomials instead of blindly giving formulas. I'll be introducing as black boxes that you can fully decipher when you're ready. By showing how they affect polynomials, you should be able to infer how they affect other functions. By simplifying the math, I hope to prevent those less customed to the more technical theory from running for the hills. 
+For example, I'll discuss the logic behind derivatives and integrals for polynomials instead of blindly giving formulas. I'll be introducing them as black boxes that you can fully decipher when you're ready. By showing how they affect polynomials, you should be able to infer how they affect other functions. By simplifying the math, I hope to prevent those less accustomed to the more technical theory from running for the hills. 
 
-My first goal is to make electrical engineering knowledge truly accessible. I found few resources that we both truly sequential and widely available at no cost. Theory and practice are not usually taught alongside each other due to time restriction. So my main aim is to bridge this gap and expose you to both theory and building as early as possible. Let's begin!
+My first goal is to make electrical engineering knowledge truly accessible. I found few resources that are both truly sequential and widely available at no cost. Theory and practice are not usually taught alongside each other due to time restrictions. So my main aim is to bridge this gap and expose you to both theory and building as early as possible. Let's begin!
 
-== 0.2) Derivatives as an Function Transformation Device
+== 0.2) Derivatives and the Power Rule
+ 
+Imagine yourself as a king during the early Renaissance period. Your kingdom attracts all kinds of scholars, many of whom are alchemists. You gather them all and request something unheard of prior. A device that would break down your jewelry and crowns into the metals that they are made of. These are tin (least valuable), iron (second most valuable), and gold (most valuable).
 
-Imagine yourself as a king during the early Renaissance period. Your kingdom attracts all kind of scholars, many of which are alchemist. You gather them all and request something unheard of prior. A device that would break down your jewelry and crowns into the metals that they are made of. These being tin (least valuable), iron (second most valuable), and gold (most valuable).
-
-After weeks, you were presented a box like device. Its behavior was an bit odd. It burned all the tin to ash,  turned the iron to tin, and the gold to iron. What would such a device look like in the mathematical world? Allow me to introduce the derivative. 
-
+After weeks, you are presented with a box-like device. Its behavior was a bit odd. It burned all the tin to ash, turned the iron to tin, and the gold to iron. What would such a device look like in the mathematical world? Allow me to introduce the derivative.
 
 #figure(
   image("scr_s_desmos-graph_der_1.png", width: 70%),
@@ -65,14 +64,14 @@ On the coordinate plan, this translate into:
 + linear equation ($y = m x + b$) --> horizontal line (where y $!= 0$)
 + parabola ($y = "constant_1" * x^2 + b$) --> linear equation ($y = m x + b$)
 
-To briefly explain the general idea, notice how the equations are becoming "less complex". By that, I mean that their exponent value is decreasing by 1.
+To briefly explain the general idea, notice how the equations' exponents are decreasing.
 
 
 By going from parabola to linear, we go from the format of $y =  x^2$ to the format of $y = x = x^1$. The exponent goes from 2 to 1.
 
 By going from linear to horizontal ($y = "constant"$), we go from the format $y=x = x^1$ to the format $y = x^0= 1 ("an constant")$. The exponent goes from 1 to 0.
 
-But why is the derivative of an constant a 0? Following the pattern above, we should be going from $y = x^0 = 1$ to $y = x^(-1) = 1^(-1) =1.$ That's not zero, you tell yourself. Well, the derivative doesn't just reduce the exponent. There's also an "hidden" constant multiplier, which is the original exponent value. Observe the following graphs below.
+But why is the derivative of an constant a 0? Following the pattern above, we should be going from $y = x^0 = 1$ to $y = x^(-1) = 1^(-1) =1.$ That's not zero, you tell yourself. Well, the derivative doesn't just reduce the exponent. There's also a constant multiplier, which is the original exponent value. Observe the following graphs below.
 
 #grid(
   columns: 3,
@@ -116,9 +115,9 @@ If $y = x^1 = x$, then its derivative is $(d/"dx")(y)=y' = 1x^0 = 1(1) = 1$.
 
 If $y = x^0 = 1$, then its derivative is $(d/"dx")(y)=y' = 0x^(-1)= 0$.
 
-Notice how original exponent is moved in front of the number. The new exponent becomes the old exponent - 1. This is known as the power rule (for derivatives) and it helps find the derivative of any algebraic functions made of x (polynomials). The power rule can be described : $(d/"dx")(x^n) = n x^(n-1)$. 
+Notice how the original exponent is moved in front of the number. The new exponent becomes the old exponent - 1. This is known as the power rule (for derivatives) and it helps find the derivative of any algebraic function made of x (polynomials). The power rule can be described : $(d/"dx")(x^n) = n x^(n-1)$. 
 
-But how do take the derivative of the function that's not made of x? What about for trig functions and log? The process of taking the derivates varies based on the type of function but an key aspect remains the same. The derivative and its relationship to rate of change.
+But how do you take the derivative of the function that's not made of x? What about for trig functions and log? The process of taking the derivatives varies based on the type of function, but the key aspect remains the same. The derivative and its relationship to rate of change.
 
 == 0.3) Derivatives and Rate of Change
 
@@ -172,12 +171,12 @@ This means that derivative of $y = 1/2(x^2)$ which exist between $0<= x <= 2$ is
 
 To summarize, the derivative = rate of change = slope.
 
-== 0.4) Integrals as  Function Transformation Devices
+== 0.4) Integrals and the Power Rule
 Let's return to the kingdom from 1.2, which you are the king of. Weeks after receiving the device, you grew dissatisfied. The original device seems to have demoted all that went inside of it. Gold was the most valuable, followed by iron, and ending with tin. Your tin was burned to ashes, your iron became tin, and your gold became iron. 
 
-Your transformed metals were now cheaper than they were originally. You felt scammed as you lost all your gold through using the device. Angered, you gather all your experts under threat of exile. After weeks of work, you acquire a new box device. The box behaved in the following manner.
+Your transformed metals are now cheaper than they were originally. You felt scammed as you lost all your gold through using the device. Angered, you gather all your experts under threat of exile. After weeks of work, you acquire a new box device. The box behaved in the following manner.
 
-The ash remains ash, the tin became iron, and the iron transformed into gold. Yeah! You now have all the gold you lost. You've place a spec of gold and it's transformed into a more valuable gem. What does this process look like on a graph? 
+The ash remains ash, the tin becomes iron, and the iron is transformed into gold. Yeah! You now have all the gold you lost. You've placed a spec of gold, and it's transformed into a more valuable gem. What does this process look like on a graph?
 
 #figure(
   image("integral_og_before.png", width: 95%),
@@ -229,7 +228,7 @@ On the coordinate plan, this translate into:
 + horizontal (where $y != 0 $) --> linear equation ($y = m x + b$)
 + linear equation ($y = m x + b$) --> parabola ($y = "constant" * x^2 + C$)
 
-Unlike in derivatives, the integrals lead to the functions becoming more "complex". Their exponents are now being increased by 1.
+Unlike in derivatives, the integrals lead to the functions' exponent increasing by 1.
 
 When integrating a horizontal line, we obtain an linear equation. We go from the format of $y = x^0$ to the format of $y = x^1$, increasing our exponents by 1. 
 
@@ -446,20 +445,19 @@ This shows that derivatives and integrals can cancel each other, as if they are 
 To avoid a common trap, let me be more precise on how I define this type of inverse.
 
 == 0.65) Inverse Relationship and the 3 Forms of Water
-If you have been in a kitchen (or are still alive), you encountered water. In many instances, a pot of water is placed on a stove before its heated. Let that unaltered liquid water to be f(x). f(x) is our original function before its transformed in any way.
+If you have been in a kitchen (or are still alive), you encountered water. In many instances, a pot of water is placed on a stove before it's heated. Let that unaltered liquid water be f(x). f(x) is our original function before its transformed in any way.
 
-When you apply heat to the pot, it begins to evaporate . After a while, all the water will become steam. Let the steam aftermath of boiling the liquid water (f(x)) be f'(x). f'(x) is the derivative of f(x), an modification of f(x) (our original, unaltered function.). In this context, the derivative would be the process of adding heat. This is the mean from which we go from f(x) --> f'(x), where $f'(x)= (d/"dx")(f(x)).$
+When you apply heat to the pot, it begins to evaporate . After a while, all the water will become steam. Let the steam aftermath of boiling the liquid water (f(x)) be f'(x). f'(x) is the derivative of f(x), a modification of f(x) (our original, unaltered function.). In this context, the derivative would be the process of adding heat. This is the means from which we go from f(x) --> f'(x), where $f'(x)= (d/"dx")(f(x)).$
 
-After evaporating all the pot's content, you refill the pot with liquid water (f(x), the original, unchanged function.) Instead of boiling, you place the water in your freezer. After a while, the water will solidify and become ice. Let the solid ice aftermath of freezing the liquid water f(x) be F(x). F(x) is the integral of f(x), an modification of f(x) (the original function). In this context, the integral would be the process of removing heat (through freezing). This is how we go from f(x) --> F(x), where $F(x) = integral(f(x))$.
+After evaporating all the pot's contents, you refill the pot with liquid water (f(x), the original, unchanged function.) Instead of boiling, you place the water in your freezer. After a while, the water will solidify and become ice. Let the solid ice aftermath of freezing the liquid water f(x) be F(x). F(x) is the integral of f(x), an modification of f(x) (the original function). In this context, the integral would be the process of removing heat (through freezing). This is how we go from f(x) --> F(x), where $F(x) = integral(f(x))$.
 
 With all of these "rules" in mind, here's how the derivative and integral cancel each other.
 
-In scenario 1, we take the derivative of an integral. This would look like $(d)/("dx")(integral()) $ or f'(F(x)). Recall these 2 rules. Taking the derivative means adding heat within our construct. And F(x) is the aftermath of integration which is ice. So taking the derivative of an integral would be like boiling ice cubes, That would result in the unaltered liquid water.
+In scenario 1, we take the derivative of an integral. This would look like $(d)/("dx")(integral()) $ or f'(F(x)). Recall these 2 rules. Taking the derivative means adding heat within our construct. And F(x) is the aftermath of integration, which is ice. So taking the derivative of an integral would be like boiling ice cubes. That would result in unaltered liquid water.
 
-In scenario 2, we take the integral of an derivative. This would look like $integral(d/"dx") $ or $F(f'(x))$. Recall these 2 rules. Taking the integral means 
-removing heat within our construct. And f'(x) is the  aftermath of derivation which is steam. So taking the integral would be the equivalent of cooling steam. This would result in the unaltered liquid water. (Fun fact: gaseous water cooling down is how rain is created).
+In scenario 2, we take the integral of a derivative. This would look like $integral(d/"dx") $ or $F(f'(x))$. Recall these 2 rules. Taking the integral means removing heat within our construct. And f'(x) is the  aftermath of derivation which is steam. So taking the integral would be the equivalent of cooling steam. This would result in the unaltered liquid water. (Fun fact: gaseous water cooling down is how rain is created).
 
-So what's the purpose of this exercise? It's to show that the inverse I'm talking about isn't an additive inverse. Like what happens when you add + 1 and -1, resulting in 0. The kind of inverse we're talking about returns something previously modified into its original state. 
+So what's the purpose of this exercise? It's to show that the inverse I'm talking about isn't an additive inverse. Like what happens when you add + 1 and -1, resulting in 0. The kind of inverse we're talking about returns something previously modified into its original state.
 
 == 0.7) Why Learn Integrals and Derivatives?
 
@@ -586,5 +584,3 @@ From 0 to 2, we produce 6 Coulomb (C).
 From 2 to 4, we produce 4 Coulomb (C).
 
 From 4 to 6, we produce 2 Coulomb (C).
-
-
